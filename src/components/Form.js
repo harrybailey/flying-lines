@@ -111,6 +111,8 @@ class Form extends React.Component {
 
                     // console.log('Winning', XLSX.SSF.parse_date_code(this.state.data[a]['Start']), XLSX.SSF.parse_date_code(this.state.data[a]['End']));
 
+                    let startDateTime = this.getDateObj(startDate);
+                    let endDateTime = this.getDateObj(endDate);
                     let current = this.getDateObj(dateRangeStart);
                     let ourEnd = this.getDateObj(dateRangeEnd);
                     let pattern = this.state.data[a]['Pattern'];
@@ -121,6 +123,12 @@ class Form extends React.Component {
                     while((current.getTime()) <= (ourEnd.getTime()))
                     {
                         // it's inside our range
+                        if(startDateTime.getTime() > current.getTime() || endDateTime.getTime() < current.getTime())
+                        {
+                            console.log('Skipping as starts in future or ends in past');
+                            current.setDate(current.getDate() + 1);
+                            continue;
+                        }
 
                         // Loop the flight days to check each as we increment
                         // Check the current date is a M,T,W,T,F,S,S and it's enabled
