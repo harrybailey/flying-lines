@@ -6,6 +6,7 @@ function MainContainer()
 {
     return (
         <div className="main-container">
+            <h1 class="heading">Flying Lines</h1>
            <Form />
         </div>
     );
