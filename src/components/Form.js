@@ -140,7 +140,7 @@ class Form extends React.Component {
 
                             let flight = {
                                 Al: this.state.data[a]['Al'],
-                                flNo: this.state.data[a]['FlNo'].trim(),
+                                FlNo: this.state.data[a]['FlNo'].trim(),
                                 Date: daysOfTheWeek[current.getDay()].substr(0,3) + ' ' + current.getDate().toString().padStart(2, '0') + '/' + monthofTheYear[current.getMonth()].substr(0, 3) + '/' + current.getFullYear(),
                                 Orig: this.state.data[a]['Orig'],
                                 'STD (Loc)': this.getReadableHours(departureTime),
